@@ -26,7 +26,7 @@ type Master struct {
 	files   []string // Input files
 	nReduce int      // Number of reduce partitions
 
-	shutdown chan struct{}
+	shutdown chan struct{}  //struct类型的channel 必须进行close操作，才能执行 <- shutdown 输出，否则是死锁，不占用内存
 	l        net.Listener
 	stats    []int
 }
